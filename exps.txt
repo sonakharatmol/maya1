@@ -223,7 +223,7 @@ upload src and pom.xml
 open jenkins
 create item
 maven project
-source code managemnet------select git-----reposotory link
+source code managemnet------select git-----repository link
 
 trigger poll scm---******
 build----Root POM---pom.xml
