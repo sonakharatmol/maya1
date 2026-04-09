@@ -304,3 +304,238 @@ public class Calculator {
 }
 
 
+
+Experiment 18: Docker Image Push to Docker Hub
+
+Objective: To understand Docker registries and learn how to push a Docker image to Docker Hub for sharing and deployment.
+
+
+Step1. Create Dockerfile and Java File and save both in a folder by the name Docker-Java
+ 
+Dockerfile
+
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY . /app
+RUN javac Grade.java
+CMD ["java", "Grade"]
+
+Java File
+
+import java.util.Scanner;
+
+public class Grade{
+
+  // Returns a letter grade based on the average
+  static char gradeFunction(double avg) {
+    if (avg >= 90) return 'A';
+    else if (avg >= 80) return 'B';
+    else if (avg >= 70) return 'C';
+    else if (avg >= 60) return 'D';
+    else return 'F';
+  }
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("How many grades (1 to 5)? ");
+    int count = scanner.nextInt();
+
+    // Validate the input count
+    if (count < 1 || count > 5) {
+      System.out.println("Invalid number. You must enter between 1 and 5 grades.");
+      scanner.close();
+      return; // Exit
+    }
+
+    double sum = 0.0;
+
+    // Read each grade
+    for (int i = 1; i <= count; i++) {
+      System.out.print("Enter grade " + i + ": ");
+      double grade = scanner.nextDouble();
+      sum += grade;
+    }
+
+    double avg = sum / count;
+    System.out.println("Average: " + avg);
+    System.out.println("Letter grade: " + gradeFunction(avg));
+
+    scanner.close();
+  }
+}
+
+
+
+
+
+
+public class GreetingService {
+
+    public String greet(String name) {
+        if (name == null || name.isEmpty()) {
+            return "Hello, Guest!";
+        }
+        return "Hello, " + name + "!";
+    }
+}
+
+
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class GreetingServiceTest {
+
+    GreetingService service = new GreetingService();
+
+    @Test
+    void testGreetingWithName() {
+        assertEquals("Hello, John!", service.greet("John"));
+    }
+
+    @Test
+    void testGreetingWithoutName() {
+        assertEquals("Hello, Guest!", service.greet(""));
+    }
+}
+
+
+
+
+
+
+
+public class LinearSearch {
+
+    public int search(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+
+
+
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class LinearSearchTest {
+
+    LinearSearch ls = new LinearSearch();
+
+    @Test
+    void testElementFound() {
+        int[] arr = {1, 2, 3, 4, 5};
+        assertEquals(2, ls.search(arr, 3));
+    }
+
+    @Test
+    void testElementNotFound() {
+        int[] arr = {1, 2, 3};
+        assertEquals(-1, ls.search(arr, 10));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class MaxFinder {
+
+    public int findMax(int a, int b, int c) {
+        return Math.max(a, Math.max(b, c));
+    }
+}
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class MaxFinderTest {
+
+    MaxFinder mf = new MaxFinder();
+
+    @Test
+    void testMaxValue() {
+        assertEquals(9, mf.findMax(3, 9, 5));
+    }
+
+    @Test
+    void testAllEqual() {
+        assertEquals(5, mf.findMax(5, 5, 5));
+    }
+}
+
+
+
+public class BankAccount {
+
+    private double balance;
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0)
+            balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance)
+            balance -= amount;
+        else
+            throw new IllegalArgumentException("Invalid withdrawal");
+    }
+}
+
+
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class BankAccountTest {
+
+    @Test
+    void testDeposit() {
+        BankAccount acc = new BankAccount(1000);
+        acc.deposit(500);
+        assertEquals(1500, acc.getBalance());
+    }
+
+    @Test
+    void testWithdraw() {
+        BankAccount acc = new BankAccount(1000);
+        acc.withdraw(400);
+        assertEquals(600, acc.getBalance());
+    }
+
+    @Test
+    void testInvalidWithdraw() {
+        BankAccount acc = new BankAccount(1000);
+        assertThrows(IllegalArgumentException.class, () -> acc.withdraw(2000));
+    }
+}
