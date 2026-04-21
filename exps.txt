@@ -1,3 +1,150 @@
+1
+git init
+echo "Hello Git" > file1.txt
+git status
+git add file1.txt
+git commit -m "Initial commit"
+echo "Learning Git" >> file1.txt
+git add file1.txt
+git commit -m "Updated file1.txt"
+git log
+
+2
+git init
+echo "Hello World" > file.txt
+git add file.txt
+git commit -m "Initial commit"
+git branch feature
+git checkout feature
+echo "Feature work added" >> file.txt
+git add file.txt
+git commit -m "Added feature work"
+git checkout main
+cat file.txt
+echo "Main branch update" >> file.txt
+git add file.txt
+git commit -m "Updated in main"
+git merge feature
+git log --oneline --graph --all
+
+
+
+3.
+cd path\to\your\project
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/your-username/exp3-git.git
+git branch -M main
+git push -u origin main
+git clone https://github.com/your-username/exp3-git.git
+cd exp3-git
+git log
+git pull origin main --rebase
+git push
+
+
+
+
+
+4.🔹 Part 2: Clone the Forked Repository
+git clone https://github.com/your-username/repository-name.git
+cd repository-name
+git checkout -b feature-branch
+git add .
+git commit -m "Added new feature"
+git push origin feature-branch
+
+
+# Make edits
+git add .
+git commit -m "Updated as per review"
+git push origin feature-branch
+
+
+
+5.
+Experiment 5: Git Tagging and Release Creation
+🎯 Aim
+
+To create annotated tags, push them to GitHub, and create a release to understand software versioning.
+
+🔹 Step 1: Create a Project Folder
+mkdir exp5
+cd exp5
+🔹 Step 2: Initialize Git Repository
+git init
+
+👉 This creates a new Git repository.
+
+🔹 Step 3: Create a File
+echo Hello World > file.txt
+🔹 Step 4: Add and Commit File
+git add file.txt
+git commit -m "Initial commit"
+
+👉 This is your first version of project
+
+🔹 Step 5: Connect to GitHub
+Go to GitHub
+Click New Repository
+Name it (example: exp5)
+Copy repository URL
+
+Then run:
+
+git remote add origin https://github.com/your-username/exp5.git
+git branch -M main
+git push -u origin main
+🔹 Step 6: Create First Annotated Tag (v1.0)
+git tag -a v1.0 -m "Version 1.0 - Initial release"
+
+👉 Explanation:
+
+Marks first stable version
+🔹 Step 7: Make Changes (Second Version)
+echo New Feature >> file.txt
+git add file.txt
+git commit -m "Added new feature"
+🔹 Step 8: Create Second Annotated Tag (v1.1)
+git tag -a v1.1 -m "Version 1.1 - Added feature"
+
+👉 Explanation:
+
+Shows updated/improved version
+🔹 Step 9: View Tags
+git tag
+
+👉 Output:
+
+v1.0
+v1.1
+🔹 Step 10: Push Tags to GitHub
+git push origin --tags
+🔹 Step 11: Create Release on GitHub
+Open your repo on GitHub
+Click Releases
+Click Create a new release
+Choose tag:
+v1.0 → First release
+v1.1 → Updated release
+Add title + description
+Click Publish Release
+📊 Result
+Repository created
+Two annotated tags (v1.0, v1.1) created
+Tags pushed to GitHub
+Releases created successfully
+🎓 Conclusion
+
+Git tags help in:
+Version tracking
+Release management
+Easy rollback to previous versions
+
+
+
+
 experiment 19
 open github 
 upload files of 18th exp
