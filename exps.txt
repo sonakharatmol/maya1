@@ -239,7 +239,7 @@ echo "docker volume persistent" >test.txt
 exit
 docker run -it -v myvolume:/data ubuntu bash
 cd /data/test.txt
-docker run -d -p 8081:80 -p myvolume:/usr/share/nginx/html_nginx
+docker run -d -p 8081:80 -v myvolume:/usr/share/nginx/html_nginx
 docker run -it -v myvolume:/data ubuntu bash
 echo "<h1> persistent web page </h1>" >/data/index.html
 open browser 8081
